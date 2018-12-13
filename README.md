@@ -22,7 +22,7 @@ pod 'ProtocolOrientedNetworking'
 
 ## Author
 
-Pedro Brito, pedro.brito@inm.pt
+Pedro Brito, pedroml.brito@gmail.com
 
 ## License
 

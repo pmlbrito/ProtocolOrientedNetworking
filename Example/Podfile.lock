@@ -1,0 +1,16 @@
+PODS:
+  - ProtocolOrientedNetworking (0.1.0)
+
+DEPENDENCIES:
+  - ProtocolOrientedNetworking (from `../`)
+
+EXTERNAL SOURCES:
+  ProtocolOrientedNetworking:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ProtocolOrientedNetworking: 50ff577d80f0415d0a8cf2c20e5d25cf6bfdc201
+
+PODFILE CHECKSUM: 3cb376df6e994d0722c193459f22091ae361ef86
+
+COCOAPODS: 1.6.0.beta.2

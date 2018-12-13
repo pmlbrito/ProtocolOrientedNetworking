@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'ProtocolOrientedNetworking'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ProtocolOrientedNetworking.'
+s.name             = 'ProtocolOrientedNetworking'
+s.version          = '0.1.0'
+s.summary          = 'This is a simple test for an approach to Protocol Oriented Networking.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,26 +17,27 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+s.description      = <<-DESC
+This project is intended to provide a proof of concept for a Data Access Layer focused on Network requests, using Protocol Oriented concepts
+DESC
 
-  s.homepage         = 'https://github.com/Pedro Brito/ProtocolOrientedNetworking'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Pedro Brito' => 'pedro.brito@inm.pt' }
-  s.source           = { :git => 'https://github.com/Pedro Brito/ProtocolOrientedNetworking.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+s.homepage         = 'https://github.com/pmlbrito/ProtocolOrientedNetworking'
+# s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+s.license          = { :type => 'MIT', :file => 'LICENSE' }
+s.author           = { 'Pedro Brito' => 'pedroml.brito@gmail.com' }
+s.source           = { :git => 'https://github.com/pmlbrito/ProtocolOrientedNetworking.git', :tag => s.version.to_s }
+s.social_media_url = 'https://twitter.com/pedromlbrito'
 
-  s.ios.deployment_target = '8.0'
+s.ios.deployment_target = '8.0'
 
-  s.source_files = 'ProtocolOrientedNetworking/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'ProtocolOrientedNetworking' => ['ProtocolOrientedNetworking/Assets/*.png']
-  # }
+s.source_files = 'ProtocolOrientedNetworking/Sources/**/*'
+s.resources = 'ProtocolOrientedNetworking/Assets/**/*'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+# s.resource_bundles = {
+#   'ProtocolOrientedNetworking' => ['ProtocolOrientedNetworking/Assets/*.png']
+# }
+
+# s.public_header_files = 'Pod/Classes/**/*.h'
+s.frameworks = 'Foundation'
+# s.dependency 'AFNetworking', '~> 2.3'
 end
