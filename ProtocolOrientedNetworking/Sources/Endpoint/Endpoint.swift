@@ -44,7 +44,6 @@ public extension Endpoint {
         }
         
         composedURLRequest.httpBody = body
-        
         composedURLRequest.httpMethod = self.httpMethod.rawValue
         
         return composedURLRequest

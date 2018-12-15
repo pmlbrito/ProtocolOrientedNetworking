@@ -8,8 +8,8 @@
 import Foundation
 
 public enum AuthenticationType {
-    case api_key
-    case security_token
+    case querystring
+    case headers
 }
 
 public protocol APIConfigurable: class {
@@ -17,11 +17,11 @@ public protocol APIConfigurable: class {
     var baseURL: String { get }
     var basePath: String { get }
     var appVersion: String { get }
-    var appQueryParams: [URLQueryItem] { get }
+    var appQueryParams: [URLQueryItem]? { get }
     
     //authentication
-    var authType: AuthenticationType { get }
-    var security: [String: String] { get }
+    var authType: AuthenticationType? { get }
+    var security: [String: String]? { get }
     
     // TODO: Add more params if you need
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42F54E9221C319EC00A52776 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54E9121C319EC00A52776 /* ListTableViewController.swift */; };
+		42F54E9521C31A1800A52776 /* AppDelegate+APIConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54E9421C31A1800A52776 /* AppDelegate+APIConfigurable.swift */; };
+		42F54E9721C31B8600A52776 /* Bundle+PListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54E9621C31B8600A52776 /* Bundle+PListInfo.swift */; };
 		503342FC86745C2F68B09228 /* Pods_ProtocolOrientedNetworking_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C5F0AECFEF3050BE8ABCF /* Pods_ProtocolOrientedNetworking_Example.framework */; };
 		598A038102E1E187BFE7F186 /* Pods_ProtocolOrientedNetworking_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8111DC5137F895E98CCB932 /* Pods_ProtocolOrientedNetworking_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -30,6 +33,9 @@
 /* Begin PBXFileReference section */
 		1F12BF33D5444FEC77FB39E1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2087861E87FDCB7ED4A07989 /* Pods-ProtocolOrientedNetworking_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolOrientedNetworking_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolOrientedNetworking_Tests/Pods-ProtocolOrientedNetworking_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		42F54E9121C319EC00A52776 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		42F54E9421C31A1800A52776 /* AppDelegate+APIConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+APIConfigurable.swift"; sourceTree = "<group>"; };
+		42F54E9621C31B8600A52776 /* Bundle+PListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+PListInfo.swift"; sourceTree = "<group>"; };
 		48925B103120A84C8FE62B7F /* Pods-ProtocolOrientedNetworking_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolOrientedNetworking_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolOrientedNetworking_Example/Pods-ProtocolOrientedNetworking_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ProtocolOrientedNetworking_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtocolOrientedNetworking_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +105,9 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				42F54E9121C319EC00A52776 /* ListTableViewController.swift */,
+				42F54E9421C31A1800A52776 /* AppDelegate+APIConfigurable.swift */,
+				42F54E9621C31B8600A52776 /* Bundle+PListInfo.swift */,
 			);
 			name = "Example for ProtocolOrientedNetworking";
 			path = ProtocolOrientedNetworking;
@@ -328,7 +337,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42F54E9221C319EC00A52776 /* ListTableViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				42F54E9721C31B8600A52776 /* Bundle+PListInfo.swift in Sources */,
+				42F54E9521C31A1800A52776 /* AppDelegate+APIConfigurable.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
