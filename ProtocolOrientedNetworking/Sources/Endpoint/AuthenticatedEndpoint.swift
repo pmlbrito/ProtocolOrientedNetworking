@@ -8,8 +8,8 @@
 import Foundation
 
 public protocol AuthenticatedEndpoint: Endpoint {
-    var authType: AuthenticationType? { get }
-    var security: [String: String]? { get }
+    //var authType: AuthenticationType? { get }
+    //var security: [String: String]? { get }
     var queryParameters: [URLQueryItem]? { get }
 }
 
@@ -21,20 +21,23 @@ public extension AuthenticatedEndpoint {
         var components = URLComponents(string: base)!
         components.path = path
         var queryParams = APIConfiguration.shared.appQueryParams
-        if !self.security.isEmpty {
-            switch self.authType {
-            case .querystring:
-                self.security.forEach { (key, value) in
-                    queryParams.append(URLQueryItem(name: key, value: value))
+        if !self.security.isNilOrEmpty {
+            if let auth = self.authType {
+                switch auth {
+                case .querystring:
+                    self.security?.forEach { (arg) in
+                        let (key, value) = arg
+                        queryParams?.append(URLQueryItem(name: key, value: value))
+                    }
+                    break
+                default:
+                    break
                 }
-            break
-            default:
-                break
             }
         }
         
-        if let additionQueryParameters = queryParameters {
-            queryParams.append(contentsOf: additionQueryParameters)
+        if let additionQueryParameters = self.queryParameters {
+            queryParams?.append(contentsOf: additionQueryParameters)
         }
         
         components.queryItems = queryParams
@@ -54,16 +57,18 @@ public extension AuthenticatedEndpoint {
         composedURLRequest.httpBody = self.body
         
         composedURLRequest.httpMethod = self.httpMethod.rawValue
-        if !self.security.isEmpty {
-            switch self.authType {
-            case .headers:
-                self.security.forEach { (key, value) in
-                    //inject api key header
-                    composedURLRequest.setValue(value, forHTTPHeaderField: key)
+        if !self.security.isNilOrEmpty {
+            if let auth = self.authType {
+                switch auth {
+                case .headers:
+                    self.security?.forEach { (arg) in
+                        let (key, value) = arg
+                        composedURLRequest.setValue(value, forHTTPHeaderField: key)
+                    }
+                    break
+                default:
+                    break
                 }
-                break
-            default:
-                break
             }
         }
         return composedURLRequest
