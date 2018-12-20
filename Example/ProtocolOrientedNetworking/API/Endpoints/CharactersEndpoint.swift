@@ -10,10 +10,11 @@ import Foundation
 import ProtocolOrientedNetworking
 
 enum CharactersEndpoint {
-    case list_caracters
+    case list_caracters(offset: Int, pageSize: Int)
 }
 
-extension CharactersEndpoint: Endpoint {
+extension CharactersEndpoint: AuthenticatedEndpoint {
+    
     var path: String {
         switch self {
         case .list_caracters:
@@ -28,9 +29,17 @@ extension CharactersEndpoint: Endpoint {
         }
     }
     
+    var queryParameters: [URLQueryItem]? {
+        switch self {
+        case .list_caracters(let offset, let pageSize):
+            var params = [URLQueryItem]()
+            params.append(URLQueryItem(name: "limit", value: String(describing: pageSize)))
+            params.append(URLQueryItem(name: "offset", value: String(describing: offset)))
+            return params
+        }
+    }
+    
     var body: Data? {
         return nil
     }
-    
-    
 }

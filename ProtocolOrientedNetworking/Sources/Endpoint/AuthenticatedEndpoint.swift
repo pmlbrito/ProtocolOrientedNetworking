@@ -8,8 +8,8 @@
 import Foundation
 
 public protocol AuthenticatedEndpoint: Endpoint {
-    //var authType: AuthenticationType? { get }
-    //var security: [String: String]? { get }
+    var authType: AuthenticationType? { get }
+    var security: [String: String]? { get }
     var queryParameters: [URLQueryItem]? { get }
 }
 
@@ -20,7 +20,7 @@ public extension AuthenticatedEndpoint {
     public var urlComponents: URLComponents {
         var components = URLComponents(string: base)!
         components.path = path
-        var queryParams = APIConfiguration.shared.appQueryParams
+        var queryParams = APIConfiguration.shared.appQueryParams != nil ? APIConfiguration.shared.appQueryParams : [URLQueryItem]()
         if !self.security.isNilOrEmpty {
             if let auth = self.authType {
                 switch auth {

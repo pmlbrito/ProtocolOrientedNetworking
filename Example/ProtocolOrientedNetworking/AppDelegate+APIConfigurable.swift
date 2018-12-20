@@ -31,6 +31,16 @@ extension AppDelegate: APIConfigurable {
     
     var authType: AuthenticationType? { return .querystring }
     var security: [String: String]? {
-        return ["apikey": "TODO add key here"]
+        let (timestamp, hash) = self.generateRequestHash()
+        return ["ts": timestamp, "apikey": self.getPublicKey(), "hash": hash]
+    }
+    
+    fileprivate func getPublicKey() -> String { return "YOUR PUBLIC API KEY HERE" }
+    fileprivate func getPrivateKey() -> String { return "YOUR PRIVATE API KEY HERE" }
+    
+    fileprivate func generateRequestHash() -> (String, String) {
+        let timestamp = NSDate().timeIntervalSince1970.toTimestampString()
+        let hash = MarvelAPIHelper.MD5("\(timestamp)\(self.getPrivateKey())\(self.getPublicKey())")
+        return (timestamp, hash)
     }
 }

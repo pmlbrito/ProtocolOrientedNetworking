@@ -7,15 +7,13 @@
 
 import Foundation
 
-protocol APIClient {
+public protocol APIClient {
     var session: URLSession { get }
     func execute<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, jsonStrategy: JSONDecoder.KeyDecodingStrategy?, completion: @escaping (Result<T, PONetworkingError>) -> Void)
 }
 
-extension APIClient {
-    var session: URLSession {
-        return URLSession.shared
-    }
+public extension APIClient {
+    var session: URLSession { return URLSession.shared }
     
     typealias JSONTaskCompletionHandler = (Decodable?, PONetworkingError?) -> Void
     typealias ImageTaskCompletionHandler = (Data?, PONetworkingError?) -> Void
