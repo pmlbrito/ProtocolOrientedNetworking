@@ -21,6 +21,10 @@
 		42F54EB821CC1AF800A52776 /* CharactersAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EB721CC1AF800A52776 /* CharactersAPIClient.swift */; };
 		42F54EBA21CC2BDA00A52776 /* MarvelAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EB921CC2BDA00A52776 /* MarvelAPIHelper.swift */; };
 		42F54EBC21CC382B00A52776 /* TimeInterval+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EBB21CC382B00A52776 /* TimeInterval+Conversions.swift */; };
+		42F54EC121CD302F00A52776 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EC021CD302F00A52776 /* LoadingOverlay.swift */; };
+		42F54EC321CD309400A52776 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EC221CD309400A52776 /* UIColor+Additions.swift */; };
+		42F54EC521CD322A00A52776 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EC421CD322A00A52776 /* BaseViewController.swift */; };
+		42F54EC721CD32EA00A52776 /* AppDelegate+Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EC621CD32EA00A52776 /* AppDelegate+Transitions.swift */; };
 		503342FC86745C2F68B09228 /* Pods_ProtocolOrientedNetworking_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C5F0AECFEF3050BE8ABCF /* Pods_ProtocolOrientedNetworking_Example.framework */; };
 		598A038102E1E187BFE7F186 /* Pods_ProtocolOrientedNetworking_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8111DC5137F895E98CCB932 /* Pods_ProtocolOrientedNetworking_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -58,6 +62,10 @@
 		42F54EB721CC1AF800A52776 /* CharactersAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPIClient.swift; sourceTree = "<group>"; };
 		42F54EB921CC2BDA00A52776 /* MarvelAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIHelper.swift; sourceTree = "<group>"; };
 		42F54EBB21CC382B00A52776 /* TimeInterval+Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Conversions.swift"; sourceTree = "<group>"; };
+		42F54EC021CD302F00A52776 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		42F54EC221CD309400A52776 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		42F54EC421CD322A00A52776 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		42F54EC621CD32EA00A52776 /* AppDelegate+Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Transitions.swift"; sourceTree = "<group>"; };
 		48925B103120A84C8FE62B7F /* Pods-ProtocolOrientedNetworking_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolOrientedNetworking_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolOrientedNetworking_Example/Pods-ProtocolOrientedNetworking_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ProtocolOrientedNetworking_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtocolOrientedNetworking_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,6 +162,52 @@
 			path = Comics;
 			sourceTree = "<group>";
 		};
+		42F54EBD21CD2FEE00A52776 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				42F54E9421C31A1800A52776 /* AppDelegate+APIConfigurable.swift */,
+				42F54E9621C31B8600A52776 /* Bundle+PListInfo.swift */,
+				42F54EBB21CC382B00A52776 /* TimeInterval+Conversions.swift */,
+				42F54EC221CD309400A52776 /* UIColor+Additions.swift */,
+				42F54EC621CD32EA00A52776 /* AppDelegate+Transitions.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		42F54EBE21CD300C00A52776 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				42F54EC821CD330D00A52776 /* Features */,
+				42F54EBF21CD301700A52776 /* Common */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		42F54EBF21CD301700A52776 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				42F54EC021CD302F00A52776 /* LoadingOverlay.swift */,
+				42F54EC421CD322A00A52776 /* BaseViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		42F54EC821CD330D00A52776 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				42F54EC921CD331400A52776 /* CharacterList */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		42F54EC921CD331400A52776 /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				42F54E9121C319EC00A52776 /* ListTableViewController.swift */,
+			);
+			path = CharacterList;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +232,8 @@
 		607FACD21AFB9204008FA782 /* Example for ProtocolOrientedNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				42F54EBE21CD300C00A52776 /* Presentation */,
+				42F54EBD21CD2FEE00A52776 /* Categories */,
 				42F54EA021CAE3E500A52776 /* API */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
@@ -185,10 +241,6 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				42F54E9121C319EC00A52776 /* ListTableViewController.swift */,
-				42F54E9421C31A1800A52776 /* AppDelegate+APIConfigurable.swift */,
-				42F54E9621C31B8600A52776 /* Bundle+PListInfo.swift */,
-				42F54EBB21CC382B00A52776 /* TimeInterval+Conversions.swift */,
 			);
 			name = "Example for ProtocolOrientedNetworking";
 			path = ProtocolOrientedNetworking;
@@ -298,7 +350,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = pmlbrito;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -422,18 +474,22 @@
 				42F54EBC21CC382B00A52776 /* TimeInterval+Conversions.swift in Sources */,
 				42F54EB621CAEA2600A52776 /* CharactersEndpoint.swift in Sources */,
 				42F54EAC21CAE86200A52776 /* MarvelImage.swift in Sources */,
+				42F54EC521CD322A00A52776 /* BaseViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				42F54EA621CAE58900A52776 /* CharactersListResponse.swift in Sources */,
 				42F54E9721C31B8600A52776 /* Bundle+PListInfo.swift in Sources */,
 				42F54EB021CAE94B00A52776 /* ComicList.swift in Sources */,
 				42F54EB821CC1AF800A52776 /* CharactersAPIClient.swift in Sources */,
+				42F54EC121CD302F00A52776 /* LoadingOverlay.swift in Sources */,
 				42F54EA821CAE5E900A52776 /* CharactersDataContainer.swift in Sources */,
 				42F54EAE21CAE8A900A52776 /* MarvelUrl.swift in Sources */,
+				42F54EC721CD32EA00A52776 /* AppDelegate+Transitions.swift in Sources */,
 				42F54EBA21CC2BDA00A52776 /* MarvelAPIHelper.swift in Sources */,
 				42F54E9521C31A1800A52776 /* AppDelegate+APIConfigurable.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				42F54EB421CAE9B600A52776 /* ComicSummary.swift in Sources */,
 				42F54EAA21CAE64800A52776 /* Character.swift in Sources */,
+				42F54EC321CD309400A52776 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

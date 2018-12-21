@@ -3,6 +3,7 @@
 //  ProtocolOrientedNetworking
 //
 //  Created by Pedro Brito on 13/12/2018.
+//  Copyright © 2018 pmlbrito. All rights reserved.
 //
 
 import Foundation

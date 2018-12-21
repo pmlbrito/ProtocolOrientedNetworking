@@ -3,7 +3,7 @@
 //  ProtocolOrientedNetworking
 //
 //  Created by Pedro Brito on 09/26/2018.
-//  Copyright (c) 2018 Pedro Brito. All rights reserved.
+//  Copyright (c) 2018 pmlbrito. All rights reserved.
 //
 
 import UIKit
