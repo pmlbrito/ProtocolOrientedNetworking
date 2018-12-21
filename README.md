@@ -1,7 +1,8 @@
 # ProtocolOrientedNetworking
 
 This project was intended to serve as a Proof of Concept (PoC) for a Protocol Oriented API networking library that is simple in it's implementation and usage. This is not intended to cover all possible cases of use for a networking helper layer, rather than that, it's intended to serve as a learning and explorative implementation of some concepts and prove them ready to be used in production code.
-This code is inspired by a production ready and working version of this same approach to tackle a common problem for almost all projects.
+This code is inspired by a production ready and working version of this same approach to tackle a common problem for almost all projects - access network data.
+It is not the goal of this project to build a fully fledged networking framework that works for all use case scenarios. Instead, it's intended to be simple and clear, with possibilities to be expanded and re-worked to suit more needs as they show up. It's mostly intended to stay simple and with a very small footprint (20 classes or so...) and to be used for small applications that don't need all the functionality that other networking libraries offer at the expense of being very large and complex.
 
 ## Example
 
@@ -28,6 +29,14 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'ProtocolOrientedNetworking', :git => 'https://github.com/pmlbrito/ProtocolOrientedNetworking.git'
 ```
+
+## Future Work
+
+There are many points that can be changed and re-worked to make this framework more robust and flexible as for the use cases it can serve, let's take for example of functionality that can be further added:
+- The possibility to cancel current requests
+- The functionality to associante multiple requests to allow them to be canceled all together if one of them fails
+- The possibility of retrying requests upon fail
+- ... (feel free to add more)
 
 ## Author
 
