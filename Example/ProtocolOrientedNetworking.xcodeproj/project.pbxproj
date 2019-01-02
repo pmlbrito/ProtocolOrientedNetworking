@@ -25,6 +25,7 @@
 		42F54EC321CD309400A52776 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EC221CD309400A52776 /* UIColor+Additions.swift */; };
 		42F54EC521CD322A00A52776 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EC421CD322A00A52776 /* BaseViewController.swift */; };
 		42F54EC721CD32EA00A52776 /* AppDelegate+Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EC621CD32EA00A52776 /* AppDelegate+Transitions.swift */; };
+		42F54ECC21D5787200A52776 /* CharacterListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54ECB21D5787200A52776 /* CharacterListViewCell.swift */; };
 		503342FC86745C2F68B09228 /* Pods_ProtocolOrientedNetworking_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49C5F0AECFEF3050BE8ABCF /* Pods_ProtocolOrientedNetworking_Example.framework */; };
 		598A038102E1E187BFE7F186 /* Pods_ProtocolOrientedNetworking_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8111DC5137F895E98CCB932 /* Pods_ProtocolOrientedNetworking_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -66,6 +67,7 @@
 		42F54EC221CD309400A52776 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		42F54EC421CD322A00A52776 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		42F54EC621CD32EA00A52776 /* AppDelegate+Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Transitions.swift"; sourceTree = "<group>"; };
+		42F54ECB21D5787200A52776 /* CharacterListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewCell.swift; sourceTree = "<group>"; };
 		48925B103120A84C8FE62B7F /* Pods-ProtocolOrientedNetworking_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolOrientedNetworking_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolOrientedNetworking_Example/Pods-ProtocolOrientedNetworking_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ProtocolOrientedNetworking_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtocolOrientedNetworking_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,9 +205,18 @@
 		42F54EC921CD331400A52776 /* CharacterList */ = {
 			isa = PBXGroup;
 			children = (
+				42F54ECA21D5784900A52776 /* Views */,
 				42F54E9121C319EC00A52776 /* ListTableViewController.swift */,
 			);
 			path = CharacterList;
+			sourceTree = "<group>";
+		};
+		42F54ECA21D5784900A52776 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				42F54ECB21D5787200A52776 /* CharacterListViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -472,6 +483,7 @@
 			files = (
 				42F54E9221C319EC00A52776 /* ListTableViewController.swift in Sources */,
 				42F54EBC21CC382B00A52776 /* TimeInterval+Conversions.swift in Sources */,
+				42F54ECC21D5787200A52776 /* CharacterListViewCell.swift in Sources */,
 				42F54EB621CAEA2600A52776 /* CharactersEndpoint.swift in Sources */,
 				42F54EAC21CAE86200A52776 /* MarvelImage.swift in Sources */,
 				42F54EC521CD322A00A52776 /* BaseViewController.swift in Sources */,

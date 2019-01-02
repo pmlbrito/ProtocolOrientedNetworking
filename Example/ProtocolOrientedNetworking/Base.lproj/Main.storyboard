@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List Table View Controller-->
+        <!--Characters-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ListTableViewController" customModule="ProtocolOrientedNetworking_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="image_title_label_table_view_cell" rowHeight="70" id="bhh-Tx-euw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="image_title_label_table_view_cell" rowHeight="70" id="bhh-Tx-euw" customClass="CharacterListViewCell" customModule="ProtocolOrientedNetworking_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bhh-Tx-euw" id="Nmf-FF-uYw">
@@ -64,6 +64,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="ikd-Hu-zbX" secondAttribute="bottom" constant="5" id="qhG-al-7K7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellImage" destination="pGD-pb-ptF" id="KMz-yU-kxk"/>
+                                            <outlet property="cellSubtitle" destination="ikd-Hu-zbX" id="mLQ-LZ-tEd"/>
+                                            <outlet property="cellTitle" destination="3sB-51-UHV" id="sfA-9i-lDJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -76,7 +81,7 @@
                             <constraint firstItem="fD6-pj-EKx" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="zAE-Vg-dMo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="k2K-sb-lQk"/>
+                    <navigationItem key="navigationItem" title="Characters" id="k2K-sb-lQk"/>
                     <connections>
                         <outlet property="heroList" destination="fD6-pj-EKx" id="g3X-I5-zlS"/>
                     </connections>
