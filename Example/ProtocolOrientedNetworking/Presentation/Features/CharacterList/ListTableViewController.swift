@@ -35,19 +35,37 @@ class ListTableViewController: BaseViewController {
 
 extension ListTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.charactersItems.count
+        if self.charactersItems.count > 0 {
+            return self.hasMoreItems ? self.charactersItems.count + 1 : self.charactersItems.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //TODO:
+        if self.hasMoreItems && indexPath.item >= self.charactersItems.count {
+            let loader = tableView.dequeueReusableCell(withIdentifier: "LoadingTableViewCell", for: indexPath) as? LoadingTableViewCell
+            loader?.setupView()
+            return loader ?? UITableViewCell()
+        }
+        
         let char = self.charactersItems[indexPath.row]
         let cell = self.heroList.dequeueReusableCell(withIdentifier: "image_title_label_table_view_cell", for: indexPath) as? CharacterListViewCell
         
         if cell != nil {
             cell?.setupWith(char: char)
+            if let charImageURL = char.thumbnail?.getImageURL(type: .thumbnail_small) {
+                charactersClient.getCharacterImageFor(imageURL: charImageURL, imageView: cell?.cellImage)
+            }
         }
         
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell is LoadingTableViewCell {
+            self.requestCharactersPage()
+        }
     }
 }
 

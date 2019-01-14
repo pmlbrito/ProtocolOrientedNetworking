@@ -32,7 +32,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pGD-pb-ptF">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumb_not_available" translatesAutoresizingMaskIntoConstraints="NO" id="pGD-pb-ptF">
                                                     <rect key="frame" x="10" y="5" width="90" height="59.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="GSb-49-46S"/>
@@ -68,6 +68,31 @@
                                             <outlet property="cellImage" destination="pGD-pb-ptF" id="KMz-yU-kxk"/>
                                             <outlet property="cellSubtitle" destination="ikd-Hu-zbX" id="mLQ-LZ-tEd"/>
                                             <outlet property="cellTitle" destination="3sB-51-UHV" id="sfA-9i-lDJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingTableViewCell" rowHeight="70" id="gHQ-b6-Knp" customClass="LoadingTableViewCell" customModule="ProtocolOrientedNetworking_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="98" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gHQ-b6-Knp" id="1DF-e0-gCR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yu3-b1-cY1" customClass="SpinnerView" customModule="ProtocolOrientedNetworking_Example" customModuleProvider="target">
+                                                    <rect key="frame" x="167.5" y="15" width="40" height="40"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="ZML-hH-MCA"/>
+                                                        <constraint firstAttribute="width" secondItem="yu3-b1-cY1" secondAttribute="height" multiplier="1:1" id="gko-p7-xct"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yu3-b1-cY1" firstAttribute="centerX" secondItem="1DF-e0-gCR" secondAttribute="centerX" id="L8J-Z1-l2Y"/>
+                                                <constraint firstItem="yu3-b1-cY1" firstAttribute="centerY" secondItem="1DF-e0-gCR" secondAttribute="centerY" id="ocm-RQ-t3e"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="loaderView" destination="yu3-b1-cY1" id="9IH-E8-3z6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -107,4 +132,7 @@
             <point key="canvasLocation" x="-529" y="672"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="thumb_not_available" width="275" height="275"/>
+    </resources>
 </document>

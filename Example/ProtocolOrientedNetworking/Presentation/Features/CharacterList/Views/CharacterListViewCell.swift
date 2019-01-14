@@ -16,6 +16,7 @@ class CharacterListViewCell: UITableViewCell {
     func setupWith(char: Character) {
         self.cellTitle.text = char.name
         self.cellSubtitle.text = char.description
-        //TODO: cell image
+        self.cellImage.image = UIImage(named: "thumb_not_available")
+        
     }
 }
