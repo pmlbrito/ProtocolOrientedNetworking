@@ -9,44 +9,43 @@ It is not the goal of this project to build a fully fledged networking framework
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 To use this framework, you must implement:
-- The 'Configurable' protocol must be implemented as an extension for the AppDelegate class in which you set a base set of values for the client to use in it's NSURLConnection internal connection objects.
-This is just a simplified way to have your base API configurations available in the same place and be shared across all application modules as well as to be accessible via a special kind of member access lookup similar to what happens in Objective-c when you use abstract message member lookup to send a message to the instance of the object and you may or may not receive meaningfull data back.
-You simply need to have these values stored hardcoded in an AppDelegate extension
+- The 'APIConfigurable' protocol must be implemented as a class in which you set a base set of values for the client to use in it's NSURLConnection internal connection objects.
+This is just a simplified way to have your base API configurations available in the same place and to be able to be passed arount to all application modules.
 
 ```ruby
-extension AppDelegate: APIConfigurable {
+class MarvelAPIConfiguration: APIConfigurable {
     var requestTimeout: TimeInterval { return 30 }
-
+    
     var baseURL: String {
         return "https://gateway.marvel.com:443"
-        }
-
+    }
+    
     var basePath: String {
         return "/v1/public/"
-        }
-
+    }
+    
     var appVersion: String {
         return Bundle.versionNumber(for: Bundle.main)
-        }
-
+    }
+    
     var appQueryParams: [URLQueryItem]? {
         return nil
-        }
-
+    }
+    
     var authType: AuthenticationType? { return .querystring }
     var security: [String: String]? {
-    let (timestamp, hash) = self.generateRequestHash()
+        let (timestamp, hash) = self.generateRequestHash()
         return ["ts": timestamp, "apikey": self.getPublicKey(), "hash": hash]
-        }
-
-    fileprivate func getPublicKey() -> String { return "API PUBLIC KEY" }
-    fileprivate func getPrivateKey() -> String { return "API PRIVATE KEY" }
-
+    }
+    
+    fileprivate func getPublicKey() -> String { return "YOUR PUBLIC API KEY HERE" }
+    fileprivate func getPrivateKey() -> String { return "YOUR PRIVATE API KEY HERE" }
+    
     fileprivate func generateRequestHash() -> (String, String) {
         let timestamp = NSDate().timeIntervalSince1970.toTimestampString()
         let hash = MarvelAPIHelper.MD5("\(timestamp)\(self.getPrivateKey())\(self.getPublicKey())")
         return (timestamp, hash)
-        }
+    }
 }
 ```
 
@@ -70,46 +69,56 @@ In the example above, the "extension" property declaration would use a reserved 
 - Define and configure the necessary 'Endpoint' (public or authenticated) to meet the necessities of the API you are consuming
 This is where the power of the protocols extensions backed by buffed enums to explicitly declare the functionality and it's types in a very straightforward way come in.
 Let's look at the endpoint for the Characters.
-We start by providing an enum and declare the API interface for this specific part of the system. With enum parameters
+We start by providing an enum for the available routes and declare the API interface for this specific part of the system. With enum parameters
 
 ```ruby
-enum CharactersEndpoint {
+enum CharactersEndpointRoutes {
     case list_caracters(offset: Int, pageSize: Int)
     case download_image(imageURL: URL)
 }
 
-extension CharactersEndpoint: AuthenticatedEndpoint {
+struct CharactersEndpoint: AuthenticatedEndpoint {
+    var configuration: APIConfigurable
+    var route: CharactersEndpointRoutes
+    
+    init(configuration: APIConfigurable, route: CharactersEndpointRoutes) {
+        self.route = route
+        self.configuration = configuration
+    }
+}
 
+extension CharactersEndpoint {
+ 
     var base: String {
-        switch self {
+        switch self.route {
         case .download_image(let imageURL):
             let baseURL = imageURL.absoluteURL.absoluteString.replacingOccurrences(of: imageURL.path, with: "", options: [.caseInsensitive, .regularExpression])
             return baseURL
         default:
-            return APIConfiguration.shared.baseURL
-            }
+            return configuration.baseURL
+        }
     }
-
+    
     var path: String {
-        switch self {
+        switch self.route {
         case .list_caracters:
-            return String(format: "%@%@", APIConfiguration.shared.basePath, "characters")
+            return String(format: "%@%@", configuration.basePath, "characters")
         case .download_image(let imageURL):
             return imageURL.path
-            }
+        }
     }
-
+    
     var httpMethod: HTTPMethod {
-        switch self {
+        switch self.route {
         case .list_caracters:
             return .get
         case .download_image:
             return .get
-            }
+        }
     }
-
+    
     var queryParameters: [URLQueryItem]? {
-        switch self {
+        switch self.route {
         case .list_caracters(let offset, let pageSize):
             var params = [URLQueryItem]()
             params.append(URLQueryItem(name: "limit", value: String(describing: pageSize)))
@@ -117,12 +126,12 @@ extension CharactersEndpoint: AuthenticatedEndpoint {
             return params
         case .download_image:
             return nil
-            }
+        }
     }
-
+    
     var body: Data? {
         return nil
-        }
+    }
 }
 ```
 
