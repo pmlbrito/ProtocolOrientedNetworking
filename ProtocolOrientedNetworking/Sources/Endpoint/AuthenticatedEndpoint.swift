@@ -15,13 +15,13 @@ public protocol AuthenticatedEndpoint: Endpoint {
 }
 
 public extension AuthenticatedEndpoint {
-    public var authType: AuthenticationType? { return APIConfiguration.shared.authType }
-    public var security: [String: String]? { return APIConfiguration.shared.security }
+    var authType: AuthenticationType? { return configuration.authType }
+    var security: [String: String]? { return configuration.security }
     
-    public var urlComponents: URLComponents {
+    var urlComponents: URLComponents {
         var components = URLComponents(string: base)!
         components.path = path
-        var queryParams = APIConfiguration.shared.appQueryParams != nil ? APIConfiguration.shared.appQueryParams : [URLQueryItem]()
+        var queryParams = configuration.appQueryParams != nil ? configuration.appQueryParams : [URLQueryItem]()
         if !self.security.isNilOrEmpty {
             if let auth = self.authType {
                 switch auth {
@@ -49,7 +49,7 @@ public extension AuthenticatedEndpoint {
         
         let url = urlComponents.url!
         NSLog("URL: \(url)")
-        var composedURLRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: APIConfiguration.shared.requestTimeout)
+        var composedURLRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: configuration.requestTimeout)
         
         self.headers?.forEach { (key, value) in
             composedURLRequest.setValue(value, forHTTPHeaderField: key)
