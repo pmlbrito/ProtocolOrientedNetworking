@@ -9,6 +9,8 @@
 import Foundation
 
 public protocol Endpoint {
+    var configuration: APIConfigurable { get set }
+    
     var base: String { get }
     var urlComponents: URLComponents { get }
     var path: String { get }
@@ -20,25 +22,25 @@ public protocol Endpoint {
 }
 
 public extension Endpoint {
-    public var base: String { return APIConfiguration.shared.baseURL }
+    var base: String { return configuration.baseURL }
     
-    public var headers: [String: String]? {
+    var headers: [String: String]? {
         let deviceModel = UIDevice.current.model
         let osNumber = UIDevice.current.systemVersion
         let userAgent = String(format: "Apple|%@|%@", deviceModel, osNumber)
         return ["Content-Type": "application/json", "User-Agent": userAgent]
     }
     
-    public var urlComponents: URLComponents {
+    var urlComponents: URLComponents {
         var components = URLComponents(string: base)!
         components.path = path
-        components.queryItems = APIConfiguration.shared.appQueryParams
+        components.queryItems = configuration.appQueryParams
         return components
     }
     
-    public var request: URLRequest {
+    var request: URLRequest {
         let url = urlComponents.url!
-        var composedURLRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: APIConfiguration.shared.requestTimeout)
+        var composedURLRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: configuration.requestTimeout)
         
         self.headers?.forEach { (key, value) in
             composedURLRequest.setValue(value, forHTTPHeaderField: key)
@@ -50,7 +52,7 @@ public extension Endpoint {
         return composedURLRequest
     }
     
-    public func encode<T: Encodable>(data: T, with strategy: JSONEncoder.KeyEncodingStrategy? = nil) -> Data? {
+    func encode<T: Encodable>(data: T, with strategy: JSONEncoder.KeyEncodingStrategy? = nil) -> Data? {
         do {
             let jsonEncoder = JSONEncoder()
             

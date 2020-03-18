@@ -9,23 +9,29 @@
 import Foundation
 
 public class APIConfiguration: APIConfigurable {
-    public var requestTimeout: TimeInterval { return apiConfigurableDelegate?.requestTimeout ?? 10.0}
-    public var baseURL: String { return apiConfigurableDelegate?.baseURL ?? "" }
-    public var basePath: String { return apiConfigurableDelegate?.basePath ?? "" }
-    public var appVersion: String { return apiConfigurableDelegate?.appVersion ?? Bundle().object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""}
-    public var appQueryParams: [URLQueryItem]? { return apiConfigurableDelegate?.appQueryParams }
-    public var authType: AuthenticationType? { return apiConfigurableDelegate?.authType }
-    public var security: [String : String]? { return apiConfigurableDelegate?.security }
+    public var requestTimeout: TimeInterval { return self._requestTimeout ?? 10.0}
+    public var baseURL: String { return self._baseURL ?? "" }
+    public var basePath: String { return self._basePath ?? "" }
+    public var appVersion: String { return self._appVersion ?? Bundle().object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""}
+    public var appQueryParams: [URLQueryItem]? { return self._appQueryParams }
+    public var authType: AuthenticationType? { return self._authType }
+    public var security: [String : String]? { return self._security }
     
-    private weak var apiConfigurableDelegate: APIConfigurable?
+    private var _requestTimeout: TimeInterval?
+    private var _baseURL: String?
+    private var _basePath: String?
+    private var _appVersion: String?
+    private var _appQueryParams: [URLQueryItem]?
+    private var _authType: AuthenticationType?
+    private var _security: [String : String]?
     
-    public static let shared = APIConfiguration()
-    
-    private init() {
-        guard let apiDelegate = UIApplication.shared.delegate as? APIConfigurable else {
-            assertionFailure("Error: App delegate should implement APIConfigurable protocol")
-            return
-        }
-        self.apiConfigurableDelegate = apiDelegate
+    public init(baseUrl: String?, basePath: String?, requestTimeout: TimeInterval?, appVersion: String?, appQueryParams: [URLQueryItem]?, authType: AuthenticationType?, security: [String : String]?) {
+        self._baseURL = baseUrl
+        self._basePath = basePath
+        self._requestTimeout = requestTimeout
+        self._appVersion = appVersion
+        self._appQueryParams = appQueryParams
+        self._authType = authType
+        self._security = security
     }
 }

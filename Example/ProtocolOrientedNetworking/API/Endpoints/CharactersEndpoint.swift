@@ -9,34 +9,44 @@
 import Foundation
 import ProtocolOrientedNetworking
 
-enum CharactersEndpoint {
+enum CharactersEndpointRoutes {
     case list_caracters(offset: Int, pageSize: Int)
     case download_image(imageURL: URL)
 }
 
-extension CharactersEndpoint: AuthenticatedEndpoint {
+struct CharactersEndpoint: AuthenticatedEndpoint {
+    var configuration: APIConfigurable
+    var route: CharactersEndpointRoutes
     
+    init(configuration: APIConfigurable, route: CharactersEndpointRoutes) {
+        self.route = route
+        self.configuration = configuration
+    }
+}
+
+extension CharactersEndpoint {
+ 
     var base: String {
-        switch self {
+        switch self.route {
         case .download_image(let imageURL):
             let baseURL = imageURL.absoluteURL.absoluteString.replacingOccurrences(of: imageURL.path, with: "", options: [.caseInsensitive, .regularExpression])
             return baseURL
         default:
-            return APIConfiguration.shared.baseURL
+            return configuration.baseURL
         }
     }
     
     var path: String {
-        switch self {
+        switch self.route {
         case .list_caracters:
-            return String(format: "%@%@", APIConfiguration.shared.basePath, "characters")
+            return String(format: "%@%@", configuration.basePath, "characters")
         case .download_image(let imageURL):
             return imageURL.path
         }
     }
     
     var httpMethod: HTTPMethod {
-        switch self {
+        switch self.route {
         case .list_caracters:
             return .get
         case .download_image:
@@ -45,7 +55,7 @@ extension CharactersEndpoint: AuthenticatedEndpoint {
     }
     
     var queryParameters: [URLQueryItem]? {
-        switch self {
+        switch self.route {
         case .list_caracters(let offset, let pageSize):
             var params = [URLQueryItem]()
             params.append(URLQueryItem(name: "limit", value: String(describing: pageSize)))

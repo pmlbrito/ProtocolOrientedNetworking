@@ -15,7 +15,7 @@ class ListTableViewController: BaseViewController {
     @IBOutlet weak var heroList: UITableView!
     
     // API
-    let charactersClient = CharactersAPIClient()
+    let charactersClient = CharactersAPIClient(apiConfig: (UIApplication.shared.delegate as! AppDelegate).apiGlobalConfig)
     // Data
     var charactersItems = [Character]()
     var pageIndex: Int = 0

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42F54E9221C319EC00A52776 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54E9121C319EC00A52776 /* ListTableViewController.swift */; };
-		42F54E9521C31A1800A52776 /* AppDelegate+APIConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54E9421C31A1800A52776 /* AppDelegate+APIConfigurable.swift */; };
+		42F54E9521C31A1800A52776 /* MarvelAPIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54E9421C31A1800A52776 /* MarvelAPIConfiguration.swift */; };
 		42F54E9721C31B8600A52776 /* Bundle+PListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54E9621C31B8600A52776 /* Bundle+PListInfo.swift */; };
 		42F54EA621CAE58900A52776 /* CharactersListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EA521CAE58900A52776 /* CharactersListResponse.swift */; };
 		42F54EA821CAE5E900A52776 /* CharactersDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F54EA721CAE5E900A52776 /* CharactersDataContainer.swift */; };
@@ -52,7 +52,7 @@
 		1F12BF33D5444FEC77FB39E1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2087861E87FDCB7ED4A07989 /* Pods-ProtocolOrientedNetworking_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolOrientedNetworking_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolOrientedNetworking_Tests/Pods-ProtocolOrientedNetworking_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		42F54E9121C319EC00A52776 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; tabWidth = 3; };
-		42F54E9421C31A1800A52776 /* AppDelegate+APIConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+APIConfigurable.swift"; sourceTree = "<group>"; };
+		42F54E9421C31A1800A52776 /* MarvelAPIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIConfiguration.swift; sourceTree = "<group>"; };
 		42F54E9621C31B8600A52776 /* Bundle+PListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+PListInfo.swift"; sourceTree = "<group>"; };
 		42F54EA521CAE58900A52776 /* CharactersListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListResponse.swift; sourceTree = "<group>"; };
 		42F54EA721CAE5E900A52776 /* CharactersDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDataContainer.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		607FACE51AFB9204008FA782 /* ProtocolOrientedNetworking_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProtocolOrientedNetworking_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		74674F06844AB1FCDAE91974 /* ProtocolOrientedNetworking.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ProtocolOrientedNetworking.podspec; path = ../ProtocolOrientedNetworking.podspec; sourceTree = "<group>"; };
+		74674F06844AB1FCDAE91974 /* ProtocolOrientedNetworking.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ProtocolOrientedNetworking.podspec; path = ../ProtocolOrientedNetworking.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		841799F6C4882C8111755208 /* Pods-ProtocolOrientedNetworking_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolOrientedNetworking_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolOrientedNetworking_Example/Pods-ProtocolOrientedNetworking_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BA8B8071BEA7591FA060A696 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EEDD8EB33B0DAD890B0AABF0 /* Pods-ProtocolOrientedNetworking_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolOrientedNetworking_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolOrientedNetworking_Tests/Pods-ProtocolOrientedNetworking_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,10 +114,11 @@
 		42F54EA021CAE3E500A52776 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				42F54E9421C31A1800A52776 /* MarvelAPIConfiguration.swift */,
+				42F54EB921CC2BDA00A52776 /* MarvelAPIHelper.swift */,
 				42F54EA321CAE50600A52776 /* Models */,
 				42F54EA221CAE3FC00A52776 /* Endpoints */,
 				42F54EA121CAE3EF00A52776 /* Clients */,
-				42F54EB921CC2BDA00A52776 /* MarvelAPIHelper.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -171,7 +172,6 @@
 		42F54EBD21CD2FEE00A52776 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				42F54E9421C31A1800A52776 /* AppDelegate+APIConfigurable.swift */,
 				42F54E9621C31B8600A52776 /* Bundle+PListInfo.swift */,
 				42F54EBB21CC382B00A52776 /* TimeInterval+Conversions.swift */,
 				42F54EC221CD309400A52776 /* UIColor+Additions.swift */,
@@ -395,6 +395,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -471,15 +472,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ProtocolOrientedNetworking_Example/Pods-ProtocolOrientedNetworking_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ProtocolOrientedNetworking/ProtocolOrientedNetworking.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtocolOrientedNetworking.framework",
 			);
@@ -513,7 +510,7 @@
 				42F54EAE21CAE8A900A52776 /* MarvelUrl.swift in Sources */,
 				42F54EC721CD32EA00A52776 /* AppDelegate+Transitions.swift in Sources */,
 				42F54EBA21CC2BDA00A52776 /* MarvelAPIHelper.swift in Sources */,
-				42F54E9521C31A1800A52776 /* AppDelegate+APIConfigurable.swift in Sources */,
+				42F54E9521C31A1800A52776 /* MarvelAPIConfiguration.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				42F54EB421CAE9B600A52776 /* ComicSummary.swift in Sources */,
 				42F54EAA21CAE64800A52776 /* Character.swift in Sources */,
@@ -677,7 +674,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -696,7 +693,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -716,7 +713,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProtocolOrientedNetworking_Example.app/ProtocolOrientedNetworking_Example";
 			};
 			name = Debug;
@@ -733,7 +730,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProtocolOrientedNetworking_Example.app/ProtocolOrientedNetworking_Example";
 			};
 			name = Release;

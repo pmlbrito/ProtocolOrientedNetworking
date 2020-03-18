@@ -11,10 +11,14 @@ import ProtocolOrientedNetworking
 
 
 class CharactersAPIClient: APIClient {
+    var config: APIConfigurable
     
-    func getCharactersList(size: Int, offset: Int, completion: @escaping (Result<CharactersListResponse?,
-        PONetworkingError>) -> Void) {
-        let endPoint = CharactersEndpoint.list_caracters(offset: offset, pageSize: size)
+    init(apiConfig: APIConfigurable) {
+        self.config = apiConfig
+    }
+    
+    func getCharactersList(size: Int, offset: Int, completion: @escaping (Result<CharactersListResponse?, PONetworkingError>) -> Void) {
+        let endPoint = CharactersEndpoint(configuration: self.config, route: .list_caracters(offset: offset, pageSize: size))
         execute(with: endPoint.request, decode: { json -> CharactersListResponse? in
             guard let charactersResult = json as? CharactersListResponse else { return nil }
             return charactersResult
@@ -22,12 +26,12 @@ class CharactersAPIClient: APIClient {
     }
     
     func getCharacterImage(imageURL: URL, completion: @escaping (Result<UIImage?, PONetworkingError>) -> Void) {
-        let endPoint = CharactersEndpoint.download_image(imageURL: imageURL)
+        let endPoint = CharactersEndpoint(configuration: self.config, route: .download_image(imageURL: imageURL))
         executeForImageDownload(with: endPoint.request, completion: completion)
     }
     
     func getCharacterImageFor(imageURL: URL, imageView: UIImageView?) {
-        let endPoint = CharactersEndpoint.download_image(imageURL: imageURL)
+        let endPoint = CharactersEndpoint(configuration: self.config, route: .download_image(imageURL: imageURL))
         executeForImageDownload(with: endPoint.request) { (result) in
             switch result {
             case .success(let image):

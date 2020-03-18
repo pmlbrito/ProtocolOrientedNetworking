@@ -1,8 +1,8 @@
 //
-//  AppDelegate+APIConfigurable.swift
+//  MarvelAPIConfiguration.swift
 //  ProtocolOrientedNetworking_Example
 //
-//  Created by Pedro Brito on 13/12/2018.
+//  Created by Pedro Brito on 18/03/2020.
 //  Copyright © 2018 pmlbrito. All rights reserved.
 //
 
@@ -10,7 +10,8 @@ import Foundation
 import ProtocolOrientedNetworking
 
 // MARK: - APIConfigurable
-extension AppDelegate: APIConfigurable {
+
+class MarvelAPIConfiguration: APIConfigurable {
     var requestTimeout: TimeInterval { return 30 }
     
     var baseURL: String {
