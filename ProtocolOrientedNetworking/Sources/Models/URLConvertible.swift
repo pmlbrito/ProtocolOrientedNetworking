@@ -22,7 +22,7 @@ public protocol URLConvertible {
 extension String: URLConvertible {
     /// Returns a URL if `self` represents a valid URL string that conforms to RFC 2396 or throws an `PONetworkingError`.
     ///
-    /// - throws: An `AFError.invalidURL` if `self` is not a valid URL string.
+    /// - throws: An `PONetworkingError.invalidURL` if `self` is not a valid URL string.
     ///
     /// - returns: A URL or throws an `PONetworkingError`.
     public func asURL() throws -> URL {
